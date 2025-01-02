@@ -5,7 +5,7 @@ configs = {
     "default": {
         "model": {
             "type": "regressor",
-            "params": {"hidden_units": [512, 256]},
+            "params": {"hidden_units": [512, 512]},
         },
         "training": {
             "criterion": nn.MSELoss,
@@ -19,13 +19,6 @@ configs = {
             "criterion": nn.MSELoss,
             "feature_aggregation": False,
             "batch_size": 32,
-            "metrics": [
-                {
-                    "name": "MSE",
-                    "class": nn.MSELoss,
-                    "params": {},
-                },
-            ],
         },
     },
 }

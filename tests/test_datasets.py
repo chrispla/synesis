@@ -7,6 +7,7 @@ from torch.utils.data import Dataset
 from synesis.datasets.dataset_utils import AggregateDataset, SubitemDataset
 from synesis.datasets.magnatagatune import MagnaTagATune
 from synesis.datasets.mtgjamendo import MTGJamendo
+from synesis.datasets.giantsteps_key import GiantstepsKey
 from synesis.datasets.tinysol import TinySOL
 
 DATASETS = [
@@ -32,6 +33,22 @@ DATASETS = [
         TinySOL,
         {
             "root": "data/TinySOL",
+            "splits": [None, "train", "test", "validation"],
+            "item_format": "raw",
+        },
+    ),
+    (
+        TinySOL,
+        {
+            "root": "data/TinySOL",
+            "splits": [None, "train", "test", "validation"],
+            "item_format": "raw",
+        },
+    ),
+    (
+        GiantstepsKey,
+        {
+            "root": "data/GiantStepsKey",
             "splits": [None, "train", "test", "validation"],
             "item_format": "raw",
         },

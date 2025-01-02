@@ -71,7 +71,11 @@ if __name__ == "__main__":
         help="Feature extraction model name.",
     )
     parser.add_argument(
-        "--dataset", "-d", type=str, required=True, help="Dataset name."
+        "--dataset",
+        "-d",
+        type=str,
+        required=True,
+        help="Dataset name.",
     )
     parser.add_argument(
         "--batch_size",

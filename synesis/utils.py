@@ -4,6 +4,8 @@ import os
 
 import requests
 
+from tqdm import tqdm
+
 
 def deep_update(d, u):
     """
@@ -42,10 +44,17 @@ def download_github_dir(owner, repo, path, save_dir):
     if response.status_code == 200:
         contents = response.json()
 
+        print(contents)
+
         # Create the save directory if it doesn't exist
         os.makedirs(save_dir, exist_ok=True)
 
-        for item in contents:
+        length = len(contents)
+        pbar = tqdm(contents, total=length)
+
+        for item in pbar:
+            # Update the progress bar description
+            pbar.set_description(f"Downloading {item['name']}")
             if item["type"] == "file":
                 download_url = item["download_url"]
                 file_name = item["name"]
@@ -53,7 +62,10 @@ def download_github_dir(owner, repo, path, save_dir):
                 file_content = requests.get(download_url).content
                 with open(file_path, "wb") as file:
                     file.write(file_content)
-                print(f"Downloaded: {file_path}")
+            elif item["type"] == "dir":
+                download_github_dir(
+                    owner, repo, item["path"], os.path.join(save_dir, item["name"])
+                )
     else:
         print(
             f"Failed to fetch directory contents. Status code: {response.status_code}"

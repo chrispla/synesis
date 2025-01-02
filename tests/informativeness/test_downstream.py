@@ -63,6 +63,7 @@ def test_train_model(
         task="test",
         task_config=task_config,
         item_format=item_format,
+        logging=False,
     )
 
     # Basic assertions
@@ -111,6 +112,7 @@ def test_evaluate_model(
         task=task_name,
         task_config=task_config,
         item_format=item_format,
+        logging=False,
     )
 
     # Evaluate the model
@@ -121,6 +123,7 @@ def test_evaluate_model(
         task=task_name,
         task_config=task_config,
         item_format=item_format,
+        logging=False,
     )
 
     # Check evaluation results

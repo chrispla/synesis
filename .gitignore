@@ -179,6 +179,7 @@ ckpt/
 
 # wandb
 wandb/
+artifacts/
 
 # test scipts
 test.py
