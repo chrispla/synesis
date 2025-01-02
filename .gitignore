@@ -183,6 +183,7 @@ wandb/
 # test scipts
 test.py
 test.ipynb
+*.ipynb
 
 # nano temp files
 *.txt.*
